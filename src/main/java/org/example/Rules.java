@@ -11,7 +11,6 @@ public class Rules {
                 cell = Status.ALIVE;
             }
         return cell;
-
     }
 
 

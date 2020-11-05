@@ -1,8 +1,8 @@
 package org.example;
 
 public class Rules {
-    public int nextState(int cell, int neighbors) {
-        return 0;
+    public Status nextState(Status cell, int neighbors) {
+        return Status.DEAD;
 
 
 

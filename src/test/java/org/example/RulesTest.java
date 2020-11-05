@@ -32,6 +32,18 @@ public class RulesTest {
 
     }
 
+    @Test
+    public  void deadCellWithTwoNeighborsDoNotResurrect(){
+        Assert.assertEquals(deadCellWith(Neighbors.TWO_NEIGHBORS), Status.DEAD);
+
+    }
+
+    @Test
+    public  void deadCellWithFourNeighborsDoNotResurrect(){
+        Assert.assertEquals(deadCellWith(Neighbors.FOUR_NEIGHBORS), Status.DEAD);
+
+    }
+
     private Status liveCellWith(Neighbors neighbors){
         return nextGeneration(Status.ALIVE, neighbors);
     }

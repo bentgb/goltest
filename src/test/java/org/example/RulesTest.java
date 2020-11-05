@@ -28,15 +28,20 @@ public class RulesTest {
 
     @Test
     public  void deadCellWithThreeNeighborsBecomesAlive(){
-        Assert.assertEquals(deadCellWith(), Status.ALIVE);
+        Assert.assertEquals(deadCellWith(Neighbors.THREE_NEIGHBORS), Status.ALIVE);
 
     }
 
     private Status liveCellWith(Neighbors neighbors){
-        return new Rules().nextState(Status.ALIVE, neighbors);
+        return nextGeneration(Status.ALIVE, neighbors);
     }
 
-    private Status deadCellWith(){
-        return new Rules().nextState(Status.DEAD, Neighbors.THREE_NEIGHBORS);
+    private Status deadCellWith(Neighbors neighbors){
+        return nextGeneration(Status.DEAD, neighbors);
+    }
+
+    private Status nextGeneration(Status cellState, Neighbors neighbors ){
+        return new Rules().nextGeneration(cellState, neighbors);
+
     }
 }

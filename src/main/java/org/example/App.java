@@ -10,5 +10,7 @@ public class App
         simulation.setAlive(4,2);
 
         simulation.printBoard();
+
+
     }
 }

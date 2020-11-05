@@ -39,4 +39,25 @@ public class Simulation {
             this.board[x][y] = 0;
         }
 
+        public int countAliveNeighbors (int x, int y){
+            int count = 0;
+            count += this.board[x - 1][y - 1];
+            count += this.board[x][y - 1];
+            count += this.board[x + 1][y - 1];
+
+            count += this.board[x - 1][y];
+            count += this.board[x + 1][y];
+
+            count += this.board[x - 1][y + 1];
+            count += this.board[x][y + 1];
+            count += this.board[x + 1][y + 1];
+
+            return count;
+        }
+
+        public void step(){
+
+        }
+
+
 }

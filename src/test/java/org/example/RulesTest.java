@@ -5,25 +5,27 @@ import org.junit.Test;
 
 public class RulesTest {
 
+    Rules rules = new Rules();
+
 
     @Test
     public void lessThanTwoLiveNeighborsKillsLiveCell(){
-        Assert.assertEquals(liveCellWith(Neighbors.ONE_NEIGHBOR), Status.DEAD);
+        Assert.assertEquals(aliveCellWith(Neighbors.ONE_NEIGHBOR), Status.DEAD);
     }
 
     @Test
     public void moreThanOneNeighborLiveCellSurvives(){
-        Assert.assertEquals(liveCellWith(Neighbors.TWO_NEIGHBORS), Status.ALIVE);
+        Assert.assertEquals(aliveCellWith(Neighbors.TWO_NEIGHBORS), Status.ALIVE);
     }
 
     @Test
     public void moreThanThreeNeighborsKillsLiveCell(){
-        Assert.assertEquals(liveCellWith(Neighbors.FOUR_NEIGHBORS), Status.DEAD);
+        Assert.assertEquals(aliveCellWith(Neighbors.FOUR_NEIGHBORS), Status.DEAD);
     }
 
     @Test
     public void liveCellWithThreeNeighborsSurvives(){
-        Assert.assertEquals(liveCellWith(Neighbors.THREE_NEIGHBORS), Status.ALIVE);
+        Assert.assertEquals(aliveCellWith(Neighbors.THREE_NEIGHBORS), Status.ALIVE);
     }
 
     @Test
@@ -32,7 +34,7 @@ public class RulesTest {
 
     }
 
-    private Status liveCellWith(Neighbors neighbors){
+    private Status aliveCellWith(Neighbors neighbors){
         return nextGeneration(Status.ALIVE, neighbors);
     }
 
@@ -41,7 +43,7 @@ public class RulesTest {
     }
 
     private Status nextGeneration(Status cellState, Neighbors neighbors ){
-        return new Rules().nextGeneration(cellState, neighbors);
+        return rules.nextGeneration(cellState, neighbors);
 
     }
 }

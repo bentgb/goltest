@@ -6,7 +6,7 @@ public class Rules {
             if (neighbors.getValue() < 2 || neighbors.getValue() > 3) {
                 cell = Status.DEAD;
             }
-        }git
+        }
         else if (neighbors.getValue() == 3){
                 cell = Status.ALIVE;
             }

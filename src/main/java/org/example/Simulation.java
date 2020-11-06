@@ -5,6 +5,7 @@ public class Simulation {
         int width;
         int height;
         int[][] board;
+        Rules rules = new Rules();
 
         public Simulation(int width, int height) {
             this.width = width;
@@ -41,23 +42,44 @@ public class Simulation {
 
         public int countAliveNeighbors (int x, int y){
             int count = 0;
-            count += this.board[x - 1][y - 1];
-            count += this.board[x][y - 1];
-            count += this.board[x + 1][y - 1];
+            count += isALive(x - 1,y - 1);
+            count += isALive( x, y - 1);
+            count += isALive(x + 1, y - 1);
 
-            count += this.board[x - 1][y];
-            count += this.board[x + 1][y];
+            count += isALive(x - 1, y);
+            count += isALive(x + 1, y);
 
-            count += this.board[x - 1][y + 1];
-            count += this.board[x][y + 1];
-            count += this.board[x + 1][y + 1];
+            count += isALive(x - 1, y + 1);
+            count += isALive(x, y + 1);
+            count += isALive(x + 1, y + 1);
 
             return count;
         }
 
-        public void step(){
+        public int isALive(int x, int y){
+            if( x < 0 || x >= width){
+                return 0;
+            }
+            if ( y < 0 || y >= height){
+                return 0;
+            }
+            return this.board[x][y];
 
         }
 
+        public void step(){
+            for (int y = 0; y < height; y++) {
+               for (int x = 0; x < width; x++){
+                    int aliveNeighbors =  countAliveNeighbors(x,y);
+                    if ( this.board[x][y] == 1) {
+                        this.board[x][y] = rules.nextGeneration(Status.ALIVE, aliveNeighbors ).getValue();}
+                    else if (this.board[x][y] == 0){
+                        this.board[x][y] = rules.nextGeneration(Status.DEAD, aliveNeighbors ).getValue();}
 
-}
+                    }
+               }
+            }
+            }
+
+
+

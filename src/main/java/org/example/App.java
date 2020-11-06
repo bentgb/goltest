@@ -10,6 +10,10 @@ public class App
         simulation.setAlive(4,2);
 
         simulation.printBoard();
+        simulation.step();
+        simulation.printBoard();
+        simulation.step();
+        simulation.printBoard();
 
 
     }

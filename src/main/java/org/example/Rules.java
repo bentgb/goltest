@@ -1,17 +1,35 @@
 package org.example;
 
 public class Rules {
-    public Status nextGeneration(Status cell, Neighbors neighbors) {
-        if (cell == Status.ALIVE) {
-            if (neighbors.getValue() < 2 || neighbors.getValue() > 3) {
-                cell = Status.DEAD;
+
+    public Status nextGeneration(final Status currentState, final int neighbors) {
+        Status nextState = currentState;
+        if (currentState == Status.ALIVE) {
+            if (neighbors < 2 || neighbors > 3) {
+                nextState = Status.DEAD;
+            } else if (neighbors == 3) {
+                nextState = Status.ALIVE;
+
             }
+
         }
-        else if (neighbors.getValue() == 3){
-                cell = Status.ALIVE;
-            }
-        return cell;
+        return nextState;
     }
 
+    public Status nextGenerationForDeadCells(final Status currentState, final int neighbors) {
+        Status nextState = currentState;
+        if (currentState == Status.DEAD) {
+            if (neighbors < 2 || neighbors > 3) {
+                nextState = Status.DEAD;
+            } else if (neighbors == 3) {
+                nextState = Status.ALIVE;
+            }
+        }
+        return nextState;
+    }
 
 }
+
+
+
+

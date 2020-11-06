@@ -13,7 +13,19 @@ public class Simulation {
             this.board = new int[width][height];
         }
 
-        public void printBoard() {
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public int[][] getBoard() {
+        return board;
+    }
+
+    public void printBoard() {
             System.out.println("---");
             for (int y = 0; y < height; y++) {
                 String line = "|";

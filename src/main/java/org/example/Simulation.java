@@ -25,7 +25,6 @@ public class Simulation {
                     } else {
                         line += "*";
                     }
-
                 }
                 line += "|";
                 System.out.println(line);
@@ -38,9 +37,7 @@ public class Simulation {
             this.board[x][y] = 1;
         }
 
-        public void setDead(int x, int y){
-            this.board[x][y] = 0;
-        }
+
 
         public int countAliveNeighbors (int x, int y){
             int count = 0;

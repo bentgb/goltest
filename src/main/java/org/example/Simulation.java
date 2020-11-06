@@ -68,16 +68,18 @@ public class Simulation {
         }
 
         public void step(){
+        int[][] newboard = new int[width][height];
             for (int y = 0; y < height; y++) {
                for (int x = 0; x < width; x++){
                     int aliveNeighbors =  countAliveNeighbors(x,y);
                     if ( this.board[x][y] == 1) {
-                        this.board[x][y] = rules.nextGeneration(Status.ALIVE, aliveNeighbors ).getValue();}
+                        newboard[x][y] = rules.nextGeneration(Status.ALIVE, aliveNeighbors ).getValue();}
                     else if (this.board[x][y] == 0){
-                        this.board[x][y] = rules.nextGeneration(Status.DEAD, aliveNeighbors ).getValue();}
+                        newboard[x][y] = rules.nextGeneration(Status.DEAD, aliveNeighbors ).getValue();}
 
                     }
                }
+            this.board = newboard;
             }
             }
 
